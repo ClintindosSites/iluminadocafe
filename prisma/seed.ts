@@ -313,7 +313,7 @@ const main = async () => {
 };
 
 main()
-  .catch(e => {
+  .catch((e) => {
     throw e;
   })
   .finally(async () => {
