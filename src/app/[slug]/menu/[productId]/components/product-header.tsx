@@ -10,7 +10,7 @@ interface ProductHeaderProps {
  product: Pick<Product, 'name' | 'imageUrl'>
 }
 
-const ProductHeader = async ({product}: ProductHeaderProps) => {
+const ProductHeader =  ({product}: ProductHeaderProps) => {
 const router = useRouter()
 const handleBackClick = () => router.back()
    return (  <div className="relative w-full h-[300px]">
