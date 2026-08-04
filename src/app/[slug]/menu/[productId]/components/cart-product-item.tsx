@@ -21,7 +21,7 @@ const CartProductItem = ({product}: CartItemProps) => {
                     <Image src={product.imageUrl} alt={product.name} fill/>
                 </div>
                 <div className="space-y-1 ">
-                    <p className="text-xs">{product.name}</p>
+                    <p className="text-xs max-w-[90%] truncate text-ellipsis">{product.name}</p>
                     <p className="text-sm font-semibold">{formatCurrency(product.price)}</p>
                     {/**quantidade */}
                     <div className="flex items-center gap-1 text-center">
@@ -32,14 +32,16 @@ const CartProductItem = ({product}: CartItemProps) => {
                         <Button className="w-7 h-7 rounded-lg" variant={"destructive"} onClick={() => increaseProductQuantity(product.id)}>
                             <ChevronRightIcon/>
                         </Button>
+                        {/* Botão de deletar */}
+                        <Button className="h-7 w-7 rounded-lg mx-2 " variant={"outline"} onClick={() => removeProduct(product.id)}>
+                            <TrashIcon/>
+                        </Button>
                     </div>
                 </div>
+          
         </div>
 
-        {/* Botão de deletar */}
-        <Button className="h-7 w-7 rounded-lg " variant={"outline"} onClick={() => removeProduct(product.id)}>
-            <TrashIcon/>
-        </Button>
+      
       
         </div>
     )

@@ -92,8 +92,8 @@ return acc + product.price * product.quantity
         })
       })
     }
-    const removeProduct = (product: string) => {
-      setProducts(prevProducts => prevProducts.filter(prevProduct => prevProduct.quantity + 1))
+    const removeProduct = (productId: string) => {
+      setProducts(prevProducts => prevProducts.filter(prevProduct => prevProduct.id !== productId))
     }
   return <CartContext.Provider value={{
     isOpen: isOpen,
