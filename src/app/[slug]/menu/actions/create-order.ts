@@ -23,7 +23,7 @@ export const createOrder = async (input: CreateOrderInput) => {
     },
   });
   if (!restaurant) {
-    throw new Error("Restautante não encontrado");
+    throw new Error("Restaurante não encontrado");
   }
   const productsWithPrices = await db.product.findMany({
     where: {

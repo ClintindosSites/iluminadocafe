@@ -64,7 +64,8 @@ const CpfForm =  () => {
           </DrawerDescription>
         </DrawerHeader>
 
-        <Form {...form}>
+       <div className="p-5">
+         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
             <FormField
               control={form.control}
@@ -103,6 +104,7 @@ const CpfForm =  () => {
             </DrawerFooter>
           </form>
         </Form>
+       </div>
       </DrawerContent>
     </Drawer>
   );
