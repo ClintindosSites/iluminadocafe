@@ -12,7 +12,7 @@ const main = async () => {
         name: "Iluminado Café",
         slug: "iluminado-cafe",
         description:
-          "Restaurante delivery de comida mineira e confeitaria, localicada no bairro Pindorama em Belo Horizonte.",
+          "Restaurante e confeitaria, localizada no bairro Pindorama em Belo Horizonte.",
         avatarImageUrl: "/logo.webp",
         coverImageUrl: "/cover.webp",
       },
@@ -26,22 +26,23 @@ const main = async () => {
     await tx.product.createMany({
       data: [
         {
-          name: "McOferta Média Big Mac Duplo",
+          name: "Segunda Feira",
           description:
-            "Quatro hambúrgueres (100% carne bovina), alface americana, queijo fatiado sabor cheddar, molho especial, cebola, picles e pão com gergilim, acompanhamento e bebida.",
+            "Delicioso marmitex que acompanha arroz, feijão, macarrão ao alho e óleo, abóboroa e couve",
           price: 39.9,
           imageUrl:
             "https://u9a6wmr3as.ufs.sh/f/jppBrbk0cChQaHB8tslkBUjlHSKiuseLm2hIFzVY0OtxEPnw",
           menuCategoryId: combosCategory.id,
           restaurantId: restaurant.id,
           ingredients: [
-            "Pão com gergilim",
-            "Hambúrguer de carne 100% bovina",
-            "Alface americana",
-            "Queijo fatiado sabor cheddar",
-            "Molho especial",
-            "Cebola",
-            "Picles",
+            "Arroz",
+            "Feijão",
+            "Macarrão ao Alho e Óleo",
+            "Abóbora",
+            "Couve",
+            "Carne Cozida com Batata",
+            "Filé de lombo de porco",
+            "Filé de peito de frango",
           ],
         },
         {
