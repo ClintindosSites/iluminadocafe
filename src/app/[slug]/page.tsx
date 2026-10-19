@@ -47,6 +47,13 @@ const RestaurantPage = async ({ params }: RestaurantPageProps) => {
           option="TAKEAWAY"
           slug={slug}
         />
+        <ConsumptionMethodOption
+          buttonText="Agende seu pedido"
+          imageAlt="Para fazer a retirada no estabelecimento"
+          imageUrl="take_away.svg"
+          option="SCHEDULE_ORDER"
+          slug={slug}
+        />
       </div>
     </div>
   );

@@ -66,6 +66,12 @@ model Order {
   customerName String
   customerCpf  String
 
+
+paymentMethod       OrderPaymentMethod?
+mercadoPagoPreferenceId String? @unique
+mercadoPagoPaymentId    String? @unique
+
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -97,4 +103,11 @@ enum OrderStatus {
 enum ConsumptionMethod {
   TAKEAWAY
   DINE_IN
+  SCHEDULE_ORDER
+}
+
+enum OrderPaymentMethod {
+  PIX
+  CARD
+  CASH_ON_DELIVERY
 }

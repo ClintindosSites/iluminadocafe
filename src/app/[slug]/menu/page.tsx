@@ -1,4 +1,3 @@
-
 import { notFound } from "next/navigation";
 
 import { db } from "@/lib/prisma";
@@ -12,7 +11,9 @@ interface RestaurantMenuPageProps {
 }
 
 const isConsumptionMethodValid = (consumptionMethod: string) => {
-  return ["DINE_IN", "TAKEAWAY"].includes(consumptionMethod.toUpperCase());
+  return ["DINE_IN", "TAKEAWAY", "SCHEDULE_ORDER"].includes(
+    consumptionMethod.toUpperCase(),
+  );
 };
 
 const RestaurantMenuPage = async ({
