@@ -52,6 +52,7 @@ export const createOrder = async (input: CreateOrderInput) => {
     where: {
       id: { in: ids },
       restaurantId: restaurant.id,
+      isAvailable: true,
     },
     select: {
       id: true,
