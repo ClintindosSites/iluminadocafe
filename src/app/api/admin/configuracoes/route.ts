@@ -133,9 +133,20 @@ export async function PATCH(request: Request) {
       coverImageUrl = uploaded.url;
       coverImagePublicId = uploaded.publicId;
     }
+    const whatsappPhone = String(formData.get("whatsappPhone") ?? "").replace(
+      /\D/g,
+      "",
+    );
 
+    if (whatsappPhone && !/^\d{12,13}$/.test(whatsappPhone)) {
+      return NextResponse.json(
+        { error: "Número de WhatsApp inválido. Utilize DDI e DDD." },
+        { status: 400 },
+      );
+    }
     const updatedRestaurant = await db.restaurant.update({
       where: { id: restaurant.id },
+
       data: {
         name,
         description,
@@ -143,6 +154,7 @@ export async function PATCH(request: Request) {
         coverImageUrl,
         avatarImagePublicId,
         coverImagePublicId,
+        whatsappPhone,
       },
     });
 

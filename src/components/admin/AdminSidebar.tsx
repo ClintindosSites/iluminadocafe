@@ -2,6 +2,7 @@
 
 import {
   ChevronRight,
+  ClipboardList,
   Coffee,
   LayoutDashboard,
   Package,
@@ -16,6 +17,11 @@ const menuItems = [
     label: "Dashboard",
     href: "/admin",
     icon: LayoutDashboard,
+  },
+  {
+    label: "Pedidos",
+    href: "/admin/pedidos",
+    icon: ClipboardList,
   },
   {
     label: "Produtos",

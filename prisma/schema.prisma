@@ -9,22 +9,23 @@ datasource db {
 }
 
 model Restaurant {
-  id                  String         @id @default(uuid())
-  name                String
-  slug                String         @unique
-  description         String
-  avatarImageUrl      String
-  coverImageUrl       String
+  id             String  @id @default(uuid())
+  name           String
+  slug           String  @unique
+  description    String
+  avatarImageUrl String
+  coverImageUrl  String
+  whatsappPhone  String?
 
   // Identificadores das imagens no Cloudinary
   avatarImagePublicId String?
   coverImagePublicId  String?
 
-  createdAt           DateTime       @default(now())
-  updatedAt           DateTime       @updatedAt
-  menuCategories      MenuCategory[]
-  orders              Order[]
-  products             Product[]
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  menuCategories MenuCategory[]
+  orders         Order[]
+  products       Product[]
 }
 
 model MenuCategory {
@@ -56,20 +57,22 @@ model Product {
 }
 
 model Order {
-  id                      Int                 @id @default(autoincrement())
-  total                   Float
-  status                  OrderStatus
-  consumptionMethod       ConsumptionMethod
-  restaurantId            String
-  createdAt               DateTime            @default(now())
-  updatedAt               DateTime            @updatedAt
-  customerCpf             String
-  customerName            String
-  mercadoPagoPaymentId    String?             @unique
-  mercadoPagoPreferenceId String?             @unique
-  paymentMethod           OrderPaymentMethod?
-  restaurant              Restaurant          @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
-  orderProducts           OrderProduct[]
+  id                        Int                 @id @default(autoincrement())
+  total                     Float
+  status                    OrderStatus
+  consumptionMethod         ConsumptionMethod
+  restaurantId              String
+  createdAt                 DateTime            @default(now())
+  updatedAt                 DateTime            @updatedAt
+  customerCpf               String
+  customerName              String
+  whatsappNotifiedAt        DateTime?
+  whatsappNotificationError String?
+  mercadoPagoPaymentId      String?             @unique
+  mercadoPagoPreferenceId   String?             @unique
+  paymentMethod             OrderPaymentMethod?
+  restaurant                Restaurant          @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+  orderProducts             OrderProduct[]
 }
 
 model OrderProduct {
