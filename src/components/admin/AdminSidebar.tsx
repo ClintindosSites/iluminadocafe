@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  Bike,
   ChevronRight,
   ClipboardList,
   Coffee,
@@ -18,10 +19,16 @@ const menuItems = [
     href: "/admin",
     icon: LayoutDashboard,
   },
+
   {
     label: "Pedidos",
     href: "/admin/pedidos",
     icon: ClipboardList,
+  },
+  {
+    label: "Entregas",
+    href: "/admin/entregas",
+    icon: Bike,
   },
   {
     label: "Produtos",

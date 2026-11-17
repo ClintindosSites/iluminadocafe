@@ -9,13 +9,17 @@ datasource db {
 }
 
 model Restaurant {
-  id             String  @id @default(uuid())
-  name           String
-  slug           String  @unique
-  description    String
-  avatarImageUrl String
-  coverImageUrl  String
-  whatsappPhone  String?
+  id                    String             @id @default(uuid())
+  name                  String
+  slug                  String             @unique
+  description           String
+  avatarImageUrl        String
+  coverImageUrl         String
+  whatsappPhone         String?
+  deliveryEnabled       Boolean            @default(false)
+  deliveryAddress       String             @default("Rua Flor de Alecrim, 98, Pindorama, Belo Horizonte - MG, CEP 30865-350")
+  deliveryMaxDistanceKm Float              @default(7)
+  deliveryFeeRanges     DeliveryFeeRange[]
 
   // Identificadores das imagens no Cloudinary
   avatarImagePublicId String?
@@ -73,6 +77,23 @@ model Order {
   paymentMethod             OrderPaymentMethod?
   restaurant                Restaurant          @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
   orderProducts             OrderProduct[]
+  deliveryAddress           String?
+  deliveryDistanceKm        Float?
+  deliveryFee               Float               @default(0)
+}
+
+model DeliveryFeeRange {
+  id            String   @id @default(uuid())
+  restaurantId  String
+  minDistanceKm Float
+  maxDistanceKm Float
+  fee           Float
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  restaurant Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+
+  @@index([restaurantId])
 }
 
 model OrderProduct {
@@ -99,6 +120,7 @@ enum ConsumptionMethod {
   TAKEAWAY
   DINE_IN
   SCHEDULE_ORDER
+  DELIVERY
 }
 
 enum OrderPaymentMethod {
